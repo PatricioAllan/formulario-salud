@@ -1,0 +1,396 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    width: 900px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+  }
+
+  .header img,
+  .footer img {
+    width: 100%;
+  }
+
+  h2 {
+    background: linear-gradient(to right, #6ec1e4, #b46fd4);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .section {
+    margin-bottom: 25px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  label {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  .full {
+    grid-column: span 2;
+  }
+
+  button {
+    background: #6ec1e4;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #5aa9c9;
+  }
+
+  select {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .header-text {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .header-text .anio {
+    font-size: 14px;
+    font-weight: bold;
+    color: #013665;
+  }
+  
+  .header-text .area {
+    font-size: 14px;
+    font-weight: bold;
+    color: #013665;
+    margin: 5px 0;
+  }
+  
+  .header-text .titulo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #013665;
+  }
+
+  .auto-expand {
+    overflow: hidden;
+    resize: none;
+  }
+
+  #tabla-enfermedades {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  #tabla-enfermedades th,
+  #tabla-enfermedades td {
+    border: 1.5px solid #333;
+    padding: 6px;
+    text-align: center;
+  }
+
+  #tabla-enfermedades {
+    border: 1px solid #000;
+  }
+  
+  #tabla-enfermedades th {
+    background-color: #1e73be;
+    color: white;
+  }
+  
+  #tabla-enfermedades input {
+    width: 100%;
+    border: none;
+    outline: none;
+  }
+
+  #tabla-enfermedades input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+  }
+
+  .descripcion-enfermedades {
+    font-size: 13px;
+    background: #f0f6ff;
+    padding: 8px;
+    border-left: 4px solid #1e73be;
+    margin-bottom: 10px;
+  }
+
+  #tabla-vacunas {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border: 2px solid #000;
+  }
+  
+  #tabla-vacunas th,
+  #tabla-vacunas td {
+    border: 1.5px solid #333;
+    padding: 6px;
+    text-align: center;
+  }
+  
+  #tabla-vacunas th {
+    background-color: #1e73be;
+    color: white;
+  }
+  
+  #tabla-vacunas input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+  }
+
+  table td button {
+    padding: 3px 5px;
+    font-size: 11px;
+    width: auto !important;
+    display: block;
+  }
+
+  #tabla-enfermedades td,
+  #tabla-vacunas td {
+  white-space: nowrap;
+  }
+
+  #tabla-enfermedades button,
+  #tabla-vacunas button {
+  margin-right: 5px;
+  }
+  
+  button[onclick*="eliminarFila"] {
+    background: #e74c3c !important;
+    color: white !important;
+    border: none;
+    opacity: 1 !important;
+  }
+/* Botón limpiar (gris) */
+  button[onclick*="limpiarFila"] {
+    background: #f0f0f0;
+    color: #333;
+  }
+
+  button[onclick*="eliminarFila"] {
+    background: #e74c3c;
+    color: white;
+    border: none;
+  }
+  
+  /* Hover eliminar */
+  button[onclick*="eliminarFila"]:hover {
+    background: #c0392b;
+  }
+  
+  /* Hover limpiar */
+  button[onclick*="limpiarFila"]:hover {
+    background: #e0e0e0;
+  }
+  /* Botón eliminar (rojo) */
+
+  #tabla-enfermedades td button,
+  #tabla-vacunas td button {
+    min-width: 10px;
+  }
+
+  #tabla-cirugias {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border: 2px solid #000;
+  }
+  
+  #tabla-cirugias th,
+  #tabla-cirugias td {
+    border: 1.5px solid #333;
+    padding: 6px;
+    text-align: center;
+  }
+  
+  #tabla-cirugias th {
+    background-color: #1e73be;
+    color: white;
+  }
+  
+  #tabla-cirugias input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+  }
+
+  .acciones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+  }
+
+  #tabla-medicacion {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border: 2px solid #000;
+  }
+  
+  #tabla-medicacion th,
+  #tabla-medicacion td {
+    border: 1.5px solid #333;
+    padding: 6px;
+    text-align: center;
+  }
+  
+  #tabla-medicacion th {
+    background-color: #1e73be;
+    color: white;
+  }
+  
+  #tabla-medicacion input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+  }
+
+  #tabla-alergias {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border: 2px solid #000;
+  }
+  
+  #tabla-alergias th,
+  #tabla-alergias td {
+    border: 1.5px solid #333;
+    padding: 6px;
+    text-align: center;
+  }
+  
+  #tabla-alergias th {
+    background-color: #1e73be;
+    color: white;
+  }
+  
+  #tabla-alergias input,
+  #tabla-alergias select {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+  }
+
+  #tabla-control,
+#tabla-examenes {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  border: 2px solid #000;
+}
+
+#tabla-control th,
+#tabla-control td,
+#tabla-examenes th,
+#tabla-examenes td {
+  border: 1.5px solid #333;
+  padding: 6px;
+  text-align: center;
+}
+
+#tabla-control th,
+#tabla-examenes th {
+  background-color: #1e73be;
+  color: white;
+}
+
+#tabla-control input,
+#tabla-examenes input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+select {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+}
+
+.checkbox-group label {
+  font-size: 14px;
+}
+
+.habitos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.habitos label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.habitos select,
+.habitos input {
+  margin-top: 3px;
+  padding: 4px;
+}
+
+input[type="radio"] {
+  margin-right: 5px;
+}
+
+#seguimiento_detalle,
+#ansiedad_detalle {
+  margin-top: 8px;
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+#ansiedad_detalle {
+  margin-top: 8px;
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+  

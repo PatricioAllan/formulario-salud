@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Registro de Salud</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- HEADER -->
+      <div class="header">
+        <img src="Imagenes/Encabezado.jpg" alt="Header" />
+      </div>
+
+      <div class="header-text">
+        <p class="anio">AÑO LECTIVO 2025 - 2026</p>
+        <p class="area">SEGURIDAD E HIGIENE DE TRABAJO</p>
+        <h1 class="titulo">FICHA DE SALUD PERSONAL UESMJ</h1>
+      </div>
+
+      <form id="formSalud">
+        <!-- DATOS PERSONALES -->
+        <div class="section">
+          <h2>Datos Personales</h2>
+          <div class="grid">
+            <div>
+              <label>Nombre</label>
+              <input type="text" name="nombre" />
+            </div>
+            <div>
+              <label>Apellido</label>
+              <input type="text" name="apellido" />
+            </div>
+            <div>
+              <label>Cédula</label>
+              <input type="text" name="cedula" />
+            </div>
+            <div>
+              <label>Área de trabajo</label>
+              <input type="text" name="area_trabajo" />
+            </div>
+            <div>
+              <label>Fecha de nacimiento</label>
+              <input type="date" name="fecha_nacimiento" />
+            </div>
+            <div>
+              <label>Sexo</label>
+              <select name="sexo">
+                <option>Masculino</option>
+                <option>Femenino</option>
+              </select>
+            </div>
+            <div>
+              <label>Teléfono</label>
+              <input type="text" name="telefono" />
+            </div>
+            <div>
+              <label>Número de hijos</label>
+              <input type="text" name="hijos" />
+            </div>
+            <div>
+              <label>Estado civil</label>
+              <input type="text" name="estado_civil" />
+            </div>
+            <div class="full">
+              <label>Dirección domiciliaria</label>
+              <textarea
+                name="direccion"
+                rows="1"
+                class="auto-expand"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTACTO EMERGENCIA -->
+        <div class="section">
+          <h2>Contacto de Emergencia</h2>
+          <div class="grid">
+            <input type="text" name="em_nombre" placeholder="Nombre" />
+            <input type="text" name="em_parentesco" placeholder="Parentesco" />
+            <input type="text" name="em_celular" placeholder="Celular" />
+            <input type="text" name="em_telefono" placeholder="Teléfono" />
+            <textarea
+              name="em_direccion"
+              rows="1"
+              class="auto-expand"
+              placeholder="Dirección"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Contacto de Emergencia 2</h2>
+          <div class="grid">
+            <input type="text" name="em_nombre2" placeholder="Nombre" />
+            <input type="text" name="em_parentesco2" placeholder="Parentesco" />
+            <input type="text" name="em_celular2" placeholder="Celular" />
+            <input type="text" name="em_telefono2" placeholder="Teléfono" />
+            <textarea
+              name="em_direccion2"
+              rows="1"
+              class="auto-expand"
+              placeholder="Dirección"
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- DATOS FÍSICOS -->
+        <div class="section">
+          <h2>Datos Físicos</h2>
+          <div class="grid">
+            <select name="grupo_sanguineo">
+              <option value="">Grupo Sanguineo</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+            </select>
+            <input
+              type="text"
+              name="ev_antropométrica"
+              placeholder="Evaluación Antropométrica"
+            />
+            <input type="number" name="altura" placeholder="Altura (cm)" />
+            <input type="number" name="peso" placeholder="Peso (kg)" />
+            <input type="text" name="imc" placeholder="IMC" />
+          </div>
+        </div>
+
+        <!-- ENFERMEDADES -->
+        <div class="section">
+          <h2>Antecedentes Patológicos Personales</h2>
+          <p class="descripcion-enfermedades">
+            Se registra enfermedades crónicas como hipertensión, diabetes, asma,
+            epilepsia entre otras.
+          </p>
+          <table id="tabla-enfermedades">
+            <thead>
+              <tr>
+                <th>Patología</th>
+                <th>Tiempo de evolución</th>
+                <th>Tratamiento</th>
+                <th>Dosis/Frecuencia</th>
+                <th>Observaciones</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="text" name="patologia[]" /></td>
+                <td><input type="text" name="tiempo[]" /></td>
+                <td><input type="text" name="tratamiento[]" /></td>
+                <td><input type="text" name="dosis[]" /></td>
+                <td><input type="text" name="observaciones_enf[]" /></td>
+                <td>
+                  <div class="acciones">
+                    <button type="button" onclick="limpiarFila(this)">
+                      Limpiar
+                    </button>
+                    <button type="button" onclick="eliminarFila(this)">
+                      Eliminar
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button type="button" onclick="agregarFila()">Agregar más</button>
+        </div>
+
+        <!-- VACUNAS -->
+        <div class="section">
+          <h2>Historial de Vacunas</h2>
+
+          <p class="descripcion-enfermedades">
+            Verificar el esquema de vacunación: tétano, dt, hepatitis B, covid,
+            influenza, entre otras.
+          </p>
+
+          <table id="tabla-vacunas">
+            <thead>
+              <tr>
+                <th>Inmunológico</th>
+                <th>Fecha</th>
+                <th>Dosis</th>
+                <th>Observaciones</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="text" name="vacuna[]" /></td>
+                <td><input type="date" name="fecha_vacuna[]" /></td>
+                <td><input type="text" name="dosis_vacuna[]" /></td>
+                <td><input type="text" name="obs_vacuna[]" /></td>
+                <td>
+                  <div class="acciones">
+                    <button type="button" onclick="limpiarFila(this)">
+                      Limpiar
+                    </button>
+                    <button type="button" onclick="eliminarFila(this)">
+                      Eliminar
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <button type="button" onclick="agregarVacuna()">Agregar más</button>
+        </div>
+        <!-- CIRUGIAS -->
+        <h2>Antecedentes Quirúrgicos</h2>
+
+        <table id="tabla-cirugias">
+          <thead>
+            <tr>
+              <th>Tipo de Cirugía</th>
+              <th>Fecha</th>
+              <th>Lugar</th>
+              <th>Observaciones</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" name="cirugia_tipo[]" /></td>
+              <td><input type="date" name="cirugia_fecha[]" /></td>
+              <td><input type="text" name="cirugia_lugar[]" /></td>
+              <td><input type="text" name="cirugia_obs[]" /></td>
+              <td>
+                <div class="acciones">
+                  <button type="button" onclick="limpiarFila(this)">
+                    Limpiar
+                  </button>
+                  <button type="button" onclick="eliminarFila(this)">
+                    Eliminar
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <button type="button" onclick="agregarCirugia()">Agregar más</button>
+
+        <!-- MEDICACIÓN -->
+        <h2>Medicación Actual</h2>
+
+        <table id="tabla-medicacion">
+          <thead>
+            <tr>
+              <th>Nombre del medicamento</th>
+              <th>Dosis</th>
+              <th>Frecuencia</th>
+              <th>Observaciones</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" name="med_nombre[]" /></td>
+              <td><input type="text" name="med_dosis[]" /></td>
+              <td><input type="text" name="med_frecuencia[]" /></td>
+              <td><input type="text" name="med_obs[]" /></td>
+              <td>
+                <div class="acciones">
+                  <button type="button" onclick="limpiarFila(this)">
+                    Limpiar
+                  </button>
+                  <button type="button" onclick="eliminarFila(this)">
+                    Eliminar
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <button type="button" onclick="agregarMedicacion()">Agregar más</button>
+
+        <!-- ALERGIAS -->
+        <div class="section">
+          <h2>Alergias</h2>
+
+          <table id="tabla-alergias">
+            <thead>
+              <tr>
+                <th>Tipo de Alergia</th>
+                <th>Medicación</th>
+                <th>Dosis</th>
+                <th>Observaciones</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <select name="alergia_tipo[]" onchange="mostrarOtro(this)">
+                    <option value="">Seleccione</option>
+                    <option value="Alimentos">Alimentos</option>
+                    <option value="Medicamento">Medicamento</option>
+                    <option value="Componente">Componente</option>
+                    <option value="Otro">Otro</option>
+                  </select>
+                  <input
+                    type="text"
+                    name="alergia_otro[]"
+                    class="otro-input"
+                    placeholder="Especifique"
+                    style="display: none"
+                  />
+                </td>
+                <td><input type="text" name="alergia_medicacion[]" /></td>
+                <td><input type="text" name="alergia_dosis[]" /></td>
+                <td><input type="text" name="alergia_obs[]" /></td>
+                <td>
+                  <div class="acciones">
+                    <button type="button" onclick="limpiarFila(this)">
+                      Limpiar
+                    </button>
+                    <button type="button" onclick="eliminarFila(this)">
+                      Eliminar
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <button type="button" onclick="agregarAlergia()">Agregar más</button>
+        </div>
+        <!-- CONTROL -->
+        <h2>Antecedentes de control médico y seguimiento</h2>
+
+        <table id="tabla-control">
+          <thead>
+            <tr>
+              <th>Tiempo desde el último control médico</th>
+              <th>Especialidad</th>
+              <th>Lugar de atención</th>
+              <th>Observaciones</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" name="control_tiempo[]" /></td>
+              <td><input type="text" name="control_especialidad[]" /></td>
+              <td><input type="text" name="control_lugar[]" /></td>
+              <td><input type="text" name="control_obs[]" /></td>
+              <td>
+                <div class="acciones">
+                  <button type="button" onclick="limpiarFila(this)">
+                    Limpiar
+                  </button>
+                  <button type="button" onclick="eliminarFila(this)">
+                    Eliminar
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <button type="button" onclick="agregarControl()">Agregar más</button>
+        <!-- CONTROLES MEDICOS -->
+        <h2>Frecuencia de controles médicos</h2>
+
+        <select name="frecuencia">
+          <option value="">Seleccione</option>
+          <option>Mensual</option>
+          <option>Trimestral</option>
+          <option>Semestral</option>
+          <option>Anual</option>
+        </select>
+        <!-- SEGUIMIENTO -->
+        <h2>Se encuentra en seguimiento médico</h2>
+
+        <select name="seguimiento" onchange="toggleSeguimiento(this)">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+
+        <input
+          type="text"
+          id="seguimiento_detalle"
+          placeholder="¿Por qué?"
+          style="display: none"
+        />
+        <!-- HABITOS -->
+        <h2>Hábitos Saludables</h2>
+
+        <div class="habitos">
+          <label
+            >Actividad Física:
+            <select name="actividad">
+              <option>Selecione</option>
+              <option>Si</option>
+              <option>No</option>
+              <option>A veces</option>
+            </select>
+          </label>
+
+          <label
+            >Alcohol:
+            <select name="alcohol">
+              <option>Selecione</option>
+              <option>Si</option>
+              <option>No</option>
+              <option>A veces</option>
+            </select>
+          </label>
+
+          <label
+            >Tabaco:
+            <select name="tabaco">
+              <option>Selecione</option>
+              <option>Si</option>
+              <option>No</option>
+              <option>A veces</option>
+            </select>
+          </label>
+
+          <label
+            >Horas de sueño:
+            <input type="number" name="sueno" />
+          </label>
+        </div>
+        <!-- LIMITACIONES -->
+        <h2>Capacidad Funcional / Limitaciones</h2>
+
+        <select name="capacidad">
+          <option value="">Seleccione</option>
+          <option>Puede realizar actividad física normalmente</option>
+          <option>Presenta limitaciones</option>
+          <option>Dolor frecuente</option>
+        </select>
+        <!-- ESTRES -->
+        <h2>Salud mental y estrés</h2>
+
+        <label
+          >Nivel de estrés:
+          <select name="estres">
+            <option>Selecione</option>
+            <option>Bajo</option>
+            <option>Medio</option>
+            <option>Alto</option>
+          </select>
+        </label>
+
+        <label>Problemas de ansiedad/depresión</label>
+
+        <select name="ansiedad" onchange="toggleAnsiedad(this)">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+          <option value="Otro">Otro</option>
+        </select>
+
+        <input
+          type="text"
+          id="ansiedad_detalle"
+          name="ansiedad_detalle"
+          placeholder="Especifique"
+          style="display: none"
+        />
+        <!-- OBSERVACIONES -->
+        <div class="section">
+          <h2>Observaciones</h2>
+          <textarea
+            name="observaciones"
+            rows="2"
+            class="auto-expand"
+          ></textarea>
+        </div>
+
+        <button type="submit">Enviar</button>
+      </form>
+
+      <!-- FOOTER -->
+      <div class="footer">
+        <img src="Imagenes/Pie.jpg" alt="Footer" />
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("formSalud")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const data = Object.fromEntries(new FormData(this));
+
+          fetch(
+            "https://d3vavs.synapse.008agent.ai/webhook/38bdaec1-a80d-457c-bd92-9156a30360a0",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+            }
+          )
+            .then(() => alert("Formulario enviado correctamente"))
+            .catch(() => alert("Error al enviar"));
+        });
+
+      document.querySelectorAll(".auto-expand").forEach((el) => {
+        el.addEventListener("input", function () {
+          this.style.height = "auto";
+          this.style.height = this.scrollHeight + "px";
+        });
+      });
+
+      function agregarFila() {
+        const tabla = document.querySelector("#tabla-enfermedades tbody");
+
+        const fila = `
+    <tr>
+      <td><input type="text" name="patologia[]"></td>
+      <td><input type="text" name="tiempo[]"></td>
+      <td><input type="text" name="tratamiento[]"></td>
+      <td><input type="text" name="dosis[]"></td>
+      <td><input type="text" name="observaciones_enf[]"></td>
+      <td>
+        <button type="button" onclick="limpiarFila(this)">Limpiar</button>
+        <button type="button" onclick="eliminarFila(this)">Eliminar</button>
+      </td>
+    </tr>
+  `;
+
+        tabla.insertAdjacentHTML("beforeend", fila);
+      }
+
+      function agregarVacuna() {
+        const tabla = document.querySelector("#tabla-vacunas tbody");
+
+        const fila = `
+    <tr>
+      <td><input type="text" name="vacuna[]"></td>
+      <td><input type="date" name="fecha_vacuna[]"></td>
+      <td><input type="text" name="dosis_vacuna[]"></td>
+      <td><input type="text" name="obs_vacuna[]"></td>
+      <td>
+        <button type="button" onclick="limpiarFila(this)">Limpiar</button>
+        <button type="button" onclick="eliminarFila(this)">Eliminar</button>
+      </td>
+    </tr>
+  `;
+
+        tabla.insertAdjacentHTML("beforeend", fila);
+      }
+
+      function eliminarFila(btn) {
+        const fila = btn.closest("tr");
+        const tbody = fila.parentNode;
+
+        if (tbody.rows.length > 1) {
+          fila.remove();
+        } else {
+          alert("Debe haber al menos una fila");
+        }
+      }
+
+      function limpiarFila(btn) {
+        const fila = btn.closest("tr");
+        const inputs = fila.querySelectorAll("input");
+
+        inputs.forEach((input) => {
+          input.value = "";
+        });
+      }
+
+      function agregarCirugia() {
+        const tabla = document.querySelector("#tabla-cirugias tbody");
+
+        const fila = `
+    <tr>
+      <td><input type="text" name="cirugia_tipo[]"></td>
+      <td><input type="date" name="cirugia_fecha[]"></td>
+      <td><input type="text" name="cirugia_lugar[]"></td>
+      <td><input type="text" name="cirugia_obs[]"></td>
+      <td>
+        <div class="acciones">
+          <button type="button" onclick="limpiarFila(this)">Limpiar</button>
+          <button type="button" onclick="eliminarFila(this)">Eliminar</button>
+        </div>
+      </td>
+    </tr>
+  `;
+
+        tabla.insertAdjacentHTML("beforeend", fila);
+      }
+
+      function agregarMedicacion() {
+        const tabla = document.querySelector("#tabla-medicacion tbody");
+
+        const fila = `
+    <tr>
+      <td><input type="text" name="med_nombre[]"></td>
+      <td><input type="text" name="med_dosis[]"></td>
+      <td><input type="text" name="med_frecuencia[]"></td>
+      <td><input type="text" name="med_obs[]"></td>
+      <td>
+        <div class="acciones">
+          <button type="button" onclick="limpiarFila(this)">Limpiar</button>
+          <button type="button" onclick="eliminarFila(this)">Eliminar</button>
+        </div>
+      </td>
+    </tr>
+  `;
+
+        tabla.insertAdjacentHTML("beforeend", fila);
+      }
+
+      function mostrarOtro(select) {
+        const fila = select.closest("td");
+        const inputOtro = fila.querySelector(".otro-input");
+
+        if (select.value === "Otro") {
+          inputOtro.style.display = "block";
+        } else {
+          inputOtro.style.display = "none";
+          inputOtro.value = "";
+        }
+      }
+
+      function agregarAlergia() {
+        const tabla = document.querySelector("#tabla-alergias tbody");
+
+        const fila = `
+    <tr>
+      <td>
+        <select name="alergia_tipo[]" onchange="mostrarOtro(this)">
+          <option value="">Seleccione</option>
+          <option value="Alimentos">Alimentos</option>
+          <option value="Medicamento">Medicamento</option>
+          <option value="Componente">Componente</option>
+          <option value="Otro">Otro</option>
+        </select>
+        <input type="text" name="alergia_otro[]" class="otro-input" placeholder="Especifique" style="display:none;">
+      </td>
+      <td><input type="text" name="alergia_medicacion[]"></td>
+      <td><input type="text" name="alergia_dosis[]"></td>
+      <td><input type="text" name="alergia_obs[]"></td>
+      <td>
+        <div class="acciones">
+          <button type="button" onclick="limpiarFila(this)">Limpiar</button>
+          <button type="button" onclick="eliminarFila(this)">Eliminar</button>
+        </div>
+      </td>
+    </tr>
+  `;
+
+        tabla.insertAdjacentHTML("beforeend", fila);
+      }
+
+      function agregarControl() {
+        const tabla = document.querySelector("#tabla-control tbody");
+
+        const fila = `
+    <tr>
+      <td><input type="text" name="control_tiempo[]"></td>
+      <td><input type="text" name="control_especialidad[]"></td>
+      <td><input type="text" name="control_lugar[]"></td>
+      <td><input type="text" name="control_obs[]"></td>
+      <td>
+        <div class="acciones">
+          <button type="button" onclick="limpiarFila(this)">Limpiar</button>
+          <button type="button" onclick="eliminarFila(this)">Eliminar</button>
+        </div>
+      </td>
+    </tr>
+  `;
+
+        tabla.insertAdjacentHTML("beforeend", fila);
+      }
+
+      function agregarExamen() {
+        const tabla = document.querySelector("#tabla-examenes tbody");
+
+        const fila = `
+    <tr>
+      <td><input type="date" name="ex_fecha[]"></td>
+      <td><input type="text" name="ex_motivo[]"></td>
+      <td><input type="text" name="ex_resultados[]"></td>
+      <td>
+        <div class="acciones">
+          <button type="button" onclick="limpiarFila(this)">Limpiar</button>
+          <button type="button" onclick="eliminarFila(this)">Eliminar</button>
+        </div>
+      </td>
+    </tr>
+  `;
+
+        tabla.insertAdjacentHTML("beforeend", fila);
+      }
+
+      function toggleSeguimiento(select) {
+        const input = document.getElementById("seguimiento_detalle");
+
+        if (select.value === "Si") {
+          input.style.display = "block";
+        } else {
+          input.style.display = "none";
+          input.value = "";
+        }
+      }
+
+      function toggleAnsiedad(select) {
+        const input = document.getElementById("ansiedad_detalle");
+
+        if (select.value === "Otro") {
+          input.style.display = "block";
+        } else {
+          input.style.display = "none";
+          input.value = "";
+        }
+      }
+    </script>
+  </body>
+</html>
