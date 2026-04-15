@@ -393,4 +393,29 @@ input[type="radio"] {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-  
+
+.input-unit {
+  position: relative;
+  width: 100%;
+}
+
+.input-unit input {
+  width: 100%;
+  padding-right: 40px; /* espacio para unidad */
+  box-sizing: border-box;
+}
+
+.input-unit .unit {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+.grid select {
+  width: 100%;
+}
+
