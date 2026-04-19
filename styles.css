@@ -419,3 +419,51 @@ input[type="radio"] {
   width: 100%;
 }
 
+.input-otra {
+  width: 100%;
+}
+
+textarea.auto-expand {
+  width: 100%;
+  min-height: 30px;
+  border: none;              /* ❗ elimina recuadro */
+  outline: none;
+  resize: none;
+  overflow: hidden;
+  background: transparent;   /* ❗ mismo fondo que celda */
+  font-family: inherit;
+  font-size: inherit;
+  padding: 4px;
+  box-sizing: border-box;
+  font-family: inherit;   /* 🔥 usa misma fuente */
+  font-size: inherit;     /* 🔥 mismo tamaño */
+  line-height: 1.4;
+  color: inherit;
+  padding: 6px;
+}
+
+
+td {
+  vertical-align: top; /* ❗ evita centrado raro */
+}
+textarea.auto-expand:focus {
+  background: rgba(0,0,0,0.02);
+}
+
+textarea.normal-textarea {
+  width: 100%;
+  min-height: 80px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: none;
+  overflow: hidden;
+  padding: 8px;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+textarea.normal-textarea:focus {
+  border: 1px solid #1e73be !important;
+  box-shadow: 0 0 4px rgba(30,115,190,0.4) !important;
+  outline: none;
+}

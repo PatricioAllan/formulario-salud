@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -25,11 +25,11 @@
           <h2>Datos Personales</h2>
           <div class="grid">
             <div>
-              <label>Nombre</label>
+              <label>Nombres</label>
               <input type="text" name="nombre" />
             </div>
             <div>
-              <label>Apellido</label>
+              <label>Apellidos</label>
               <input type="text" name="apellido" />
             </div>
             <div>
@@ -85,7 +85,7 @@
               <textarea
                 name="direccion"
                 rows="1"
-                class="auto-expand"
+                class="auto-expand normal-textarea"
               ></textarea>
             </div>
           </div>
@@ -102,7 +102,7 @@
             <textarea
               name="em_direccion"
               rows="1"
-              class="auto-expand"
+              class="auto-expand normal-textarea"
               placeholder="Dirección"
             ></textarea>
           </div>
@@ -118,7 +118,7 @@
             <textarea
               name="em_direccion2"
               rows="1"
-              class="auto-expand"
+              class="auto-expand normal-textarea"
               placeholder="Dirección"
             ></textarea>
           </div>
@@ -218,9 +218,10 @@
                     type="number"
                     id="tiempo_gestacion"
                     placeholder="Tiempo"
+                    name="tiempo_gestacion"
                   />
 
-                  <select id="tipo_tiempo">
+                  <select id="tipo_tiempo" name="tipo_tiempo">
                     <option value="semanas">Semanas</option>
                     <option value="meses">Meses</option>
                   </select>
@@ -233,6 +234,7 @@
                   type="text"
                   id="medicacion_gestacion"
                   placeholder="Medicamentos"
+                  name="medicacion_gestacion"
                 />
               </div>
             </div>
@@ -251,7 +253,7 @@
               <tr>
                 <th>Patología</th>
                 <th>Tiempo de evolución</th>
-                <th>Tratamiento</th>
+                <th>Tratamiento Farmacológico</th>
                 <th>Dosis/Frecuencia</th>
                 <th>Observaciones</th>
                 <th></th>
@@ -263,7 +265,12 @@
                 <td><input type="text" name="tiempo[]" /></td>
                 <td><input type="text" name="tratamiento[]" /></td>
                 <td><input type="text" name="dosis[]" /></td>
-                <td><input type="text" name="observaciones_enf[]" /></td>
+                <td>
+                  <textarea
+                    name="observaciones_enf[]"
+                    class="auto-expand"
+                  ></textarea>
+                </td>
                 <td>
                   <div class="acciones">
                     <button type="button" onclick="limpiarFila(this)">
@@ -285,8 +292,8 @@
           <h2>Historial de Vacunas</h2>
 
           <p class="descripcion-enfermedades">
-            Verificar el esquema de vacunación: tétano, dt, hepatitis B, covid,
-            influenza, entre otras.
+            Verificar el esquema de vacunación: tétano, dicteria, hepatitis B,
+            covid, influenza, entre otras.
           </p>
 
           <table id="tabla-vacunas">
@@ -295,7 +302,8 @@
                 <th>Inmunológico</th>
                 <th>Fecha</th>
                 <th>Dosis</th>
-                <th>Observaciones</th>
+                <th>Marca de Vacuna</th>
+                <!--<th>Observaciones</th>-->
                 <th></th>
               </tr>
             </thead>
@@ -304,7 +312,27 @@
                 <td><input type="text" name="vacuna[]" /></td>
                 <td><input type="date" name="fecha_vacuna[]" /></td>
                 <td><input type="text" name="dosis_vacuna[]" /></td>
-                <td><input type="text" name="obs_vacuna[]" /></td>
+                <!--<td><input type="text" name="obs_vacuna[]" /></td>-->
+                <td>
+                  <select name="marca_vacuna[]" class="marca-vacuna">
+                    <option value="">Seleccionar</option>
+                    <option>Pfizer</option>
+                    <option>Moderna</option>
+                    <option>AstraZeneca</option>
+                    <option>Sinovac</option>
+                    <option>Sputnik V</option>
+                    <option>Johnson & Johnson</option>
+                    <option value="otra">Otra</option>
+                  </select>
+
+                  <input
+                    type="text"
+                    name="marca_vacuna_otra[]"
+                    class="input-otra"
+                    placeholder="Especifique"
+                    style="display: none; margin-top: 5px"
+                  />
+                </td>
                 <td>
                   <div class="acciones">
                     <button type="button" onclick="limpiarFila(this)">
@@ -329,7 +357,7 @@
             <tr>
               <th>Tipo de Cirugía</th>
               <th>Fecha</th>
-              <th>Lugar</th>
+              <!--<th>Lugar</th>-->
               <th>Observaciones</th>
               <th></th>
             </tr>
@@ -338,8 +366,13 @@
             <tr>
               <td><input type="text" name="cirugia_tipo[]" /></td>
               <td><input type="date" name="cirugia_fecha[]" /></td>
-              <td><input type="text" name="cirugia_lugar[]" /></td>
-              <td><input type="text" name="cirugia_obs[]" /></td>
+              <!--<td><input type="text" name="cirugia_lugar[]" /></td>-->
+              <td>
+                <textarea
+                  name="observaciones_enf[]"
+                  class="auto-expand"
+                ></textarea>
+              </td>
               <td>
                 <div class="acciones">
                   <button type="button" onclick="limpiarFila(this)">
@@ -364,7 +397,7 @@
             <tr>
               <th>Nombre del medicamento</th>
               <th>Dosis</th>
-              <th>Frecuencia</th>
+              <th>Hora</th>
               <th>Observaciones</th>
               <th></th>
             </tr>
@@ -374,7 +407,12 @@
               <td><input type="text" name="med_nombre[]" /></td>
               <td><input type="text" name="med_dosis[]" /></td>
               <td><input type="text" name="med_frecuencia[]" /></td>
-              <td><input type="text" name="med_obs[]" /></td>
+              <td>
+                <textarea
+                  name="observaciones_enf[]"
+                  class="auto-expand"
+                ></textarea>
+              </td>
               <td>
                 <div class="acciones">
                   <button type="button" onclick="limpiarFila(this)">
@@ -425,7 +463,12 @@
                 </td>
                 <td><input type="text" name="alergia_medicacion[]" /></td>
                 <td><input type="text" name="alergia_dosis[]" /></td>
-                <td><input type="text" name="alergia_obs[]" /></td>
+                <td>
+                  <textarea
+                    name="observaciones_enf[]"
+                    class="auto-expand"
+                  ></textarea>
+                </td>
                 <td>
                   <div class="acciones">
                     <button type="button" onclick="limpiarFila(this)">
@@ -460,7 +503,12 @@
               <td><input type="text" name="control_tiempo[]" /></td>
               <td><input type="text" name="control_especialidad[]" /></td>
               <td><input type="text" name="control_lugar[]" /></td>
-              <td><input type="text" name="control_obs[]" /></td>
+              <td>
+                <textarea
+                  name="observaciones_enf[]"
+                  class="auto-expand"
+                ></textarea>
+              </td>
               <td>
                 <div class="acciones">
                   <button type="button" onclick="limpiarFila(this)">
@@ -500,7 +548,73 @@
           id="seguimiento_detalle"
           placeholder="¿Por qué?"
           style="display: none"
+          name="seguimiento_detalle"
         />
+
+        <!-- EXAMENES -->
+        <div class="campo">
+          <label>¿Se ha realizado exámenes médicos recientemente?</label>
+
+          <select id="examenes_recientes" name="examenes_recientes">
+            <option value="">Seleccionar</option>
+            <option value="no">No</option>
+            <option value="si">Sí</option>
+          </select>
+        </div>
+
+        <!-- DETALLE -->
+        <div id="detalle_examenes" style="display: none; grid-column: span 2">
+          <div class="grid">
+            <!-- TIPO -->
+            <div class="campo">
+              <label>Tipo de examen</label>
+
+              <select id="tipo_examen" name="tipo_examen">
+                <option value="">Seleccionar</option>
+
+                <!-- LABORATORIO -->
+                <option>Análisis de sangre</option>
+                <option>Glucosa</option>
+                <option>Colesterol</option>
+                <option>Triglicéridos</option>
+                <option>Hemograma</option>
+                <option>Orina</option>
+
+                <!-- IMAGEN -->
+                <option>Radiografía</option>
+                <option>Tomografía (TAC)</option>
+                <option>Resonancia magnética</option>
+                <option>Ecografía</option>
+
+                <!-- OTROS -->
+                <option>Electrocardiograma</option>
+                <option>Prueba de esfuerzo</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+
+            <!-- TIEMPO -->
+            <div class="campo">
+              <label>¿Hace cuánto tiempo?</label>
+              <input
+                type="text"
+                name="tiempo_examen"
+                placeholder="Ej: 2 semanas, 3 meses"
+              />
+            </div>
+
+            <!-- MOTIVO -->
+            <div class="campo" style="grid-column: span 2">
+              <label>Motivo del examen</label>
+              <input
+                type="text"
+                name="motivo_examen"
+                placeholder="Ej: chequeo, dolor, control médico"
+              />
+            </div>
+          </div>
+        </div>
+
         <!-- HABITOS -->
         <h2>Hábitos Saludables</h2>
 
@@ -550,7 +664,7 @@
           <option>Dolor frecuente</option>
         </select>
         <!-- ESTRES -->
-       <!-- <h2>Salud mental y estrés</h2>
+        <!-- <h2>Salud mental y estrés</h2>
 
         <label
           >Nivel de estrés:
@@ -602,7 +716,7 @@
           <textarea
             name="observaciones"
             rows="2"
-            class="auto-expand"
+            class="auto-expand normal-textarea"
           ></textarea>
         </div>
 
@@ -631,7 +745,7 @@
                 "Content-Type": "application/json",
               },
               body: JSON.stringify(data),
-            }
+            },
           )
             .then(() => alert("Formulario enviado correctamente"))
             .catch(() => alert("Error al enviar"));
@@ -653,7 +767,7 @@
       <td><input type="text" name="tiempo[]"></td>
       <td><input type="text" name="tratamiento[]"></td>
       <td><input type="text" name="dosis[]"></td>
-      <td><input type="text" name="observaciones_enf[]"></td>
+      <td><textarea name="observaciones_enf[]" class="auto-expand"></textarea></td>
       <td>
         <button type="button" onclick="limpiarFila(this)">Limpiar</button>
         <button type="button" onclick="eliminarFila(this)">Eliminar</button>
@@ -672,7 +786,20 @@
       <td><input type="text" name="vacuna[]"></td>
       <td><input type="date" name="fecha_vacuna[]"></td>
       <td><input type="text" name="dosis_vacuna[]"></td>
-      <td><input type="text" name="obs_vacuna[]"></td>
+      <td>
+        <select name="marca_vacuna[]" class="marca-vacuna">
+          <option value="">Seleccionar</option>
+          <option>Pfizer</option>
+          <option>Moderna</option>
+          <option>AstraZeneca</option>
+          <option>Sinovac</option>
+          <option>Sputnik V</option>
+          <option>Johnson & Johnson</option>
+          <option value="otra">Otra</option>
+        </select>
+      
+        <input type="text" name="marca_vacuna_otra[]" class="input-otra" style="display:none;">
+      </td>
       <td>
         <button type="button" onclick="limpiarFila(this)">Limpiar</button>
         <button type="button" onclick="eliminarFila(this)">Eliminar</button>
@@ -696,11 +823,18 @@
 
       function limpiarFila(btn) {
         const fila = btn.closest("tr");
-        const inputs = fila.querySelectorAll("input");
 
-        inputs.forEach((input) => {
-          input.value = "";
+        // limpiar inputs
+        fila.querySelectorAll("input").forEach((el) => (el.value = ""));
+
+        // limpiar textarea
+        fila.querySelectorAll("textarea").forEach((el) => {
+          el.value = "";
+          el.style.height = "auto"; // 🔥 reset altura
         });
+
+        // limpiar selects
+        fila.querySelectorAll("select").forEach((el) => (el.selectedIndex = 0));
       }
 
       function agregarCirugia() {
@@ -711,7 +845,7 @@
       <td><input type="text" name="cirugia_tipo[]"></td>
       <td><input type="date" name="cirugia_fecha[]"></td>
       <td><input type="text" name="cirugia_lugar[]"></td>
-      <td><input type="text" name="cirugia_obs[]"></td>
+      <td><textarea name="cirugia_obs[]" class="auto-expand"></textarea></td>
       <td>
         <div class="acciones">
           <button type="button" onclick="limpiarFila(this)">Limpiar</button>
@@ -732,7 +866,7 @@
       <td><input type="text" name="med_nombre[]"></td>
       <td><input type="text" name="med_dosis[]"></td>
       <td><input type="text" name="med_frecuencia[]"></td>
-      <td><input type="text" name="med_obs[]"></td>
+      <td><textarea name="med_obs[]" class="auto-expand"></textarea></td>
       <td>
         <div class="acciones">
           <button type="button" onclick="limpiarFila(this)">Limpiar</button>
@@ -774,7 +908,7 @@
       </td>
       <td><input type="text" name="alergia_medicacion[]"></td>
       <td><input type="text" name="alergia_dosis[]"></td>
-      <td><input type="text" name="alergia_obs[]"></td>
+      <td><textarea name="alergia_obs[]" class="auto-expand"></textarea></td>
       <td>
         <div class="acciones">
           <button type="button" onclick="limpiarFila(this)">Limpiar</button>
@@ -795,7 +929,7 @@
       <td><input type="text" name="control_tiempo[]"></td>
       <td><input type="text" name="control_especialidad[]"></td>
       <td><input type="text" name="control_lugar[]"></td>
-      <td><input type="text" name="control_obs[]"></td>
+      <td><textarea name="control_obs[]" class="auto-expand"></textarea></td>
       <td>
         <div class="acciones">
           <button type="button" onclick="limpiarFila(this)">Limpiar</button>
@@ -931,6 +1065,61 @@
           this.style.height = this.scrollHeight + "px";
         });
       }
+
+      document.addEventListener("change", function (e) {
+        if (e.target.classList.contains("marca-vacuna")) {
+          const select = e.target;
+          const inputOtra = select.parentElement.querySelector(".input-otra");
+
+          if (select.value === "otra") {
+            inputOtra.style.display = "block";
+          } else {
+            inputOtra.style.display = "none";
+            inputOtra.value = "";
+          }
+        }
+      });
+      const examenesSelect = document.getElementById("examenes_recientes");
+      const detalleExamenes = document.getElementById("detalle_examenes");
+
+      if (examenesSelect) {
+        examenesSelect.addEventListener("change", function () {
+          if (this.value === "si") {
+            detalleExamenes.style.display = "block";
+          } else {
+            detalleExamenes.style.display = "none";
+          }
+        });
+      }
+
+      document.addEventListener("change", function (e) {
+        if (e.target.id === "tipo_examen") {
+          let contenedor = e.target.parentElement;
+          let existente = contenedor.querySelector(".otro-examen");
+
+          if (e.target.value === "otro") {
+            if (!existente) {
+              const input = document.createElement("input");
+              input.type = "text";
+              input.name = "otro_examen";
+              input.name = "tipo_examen_otro";
+              input.placeholder = "Especifique";
+              input.classList.add("otro-examen");
+              input.style.marginTop = "5px";
+
+              contenedor.appendChild(input);
+            }
+          } else {
+            if (existente) existente.remove();
+          }
+        }
+      });
+      document.addEventListener("input", function (e) {
+        if (e.target.classList.contains("auto-expand")) {
+          e.target.style.height = "auto";
+          e.target.style.height = e.target.scrollHeight + "px";
+        }
+      });
     </script>
   </body>
 </html>
